@@ -1,0 +1,359 @@
+
+<!DOCTYPE html>
+<html>
+<title>Genshin Impact Quiz</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+  height: 100%;
+  color: #777;
+  line-height: 1.8;
+}
+
+
+button {
+  margin: 50px;
+  font-family: inherit;
+}
+/* End of Page styling */
+
+
+/* Slide button styling */
+.slide {
+  font-size: 20px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px 30px 13px;
+  outline: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.slide i {
+  opacity: 0;
+  font-size: 13px;
+  transition: 0.2s;
+  position: absolute;
+  right: 10px;
+  top: 26px;
+  transition: transform 1;
+}
+
+.slide div {
+  transition: transform 0.8s;
+}
+
+.slide:hover div {
+  transform: translateX(-6px);
+}
+
+.slide::after {
+  content: "";
+  background-color: #9DA7C2;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+}
+
+.slide:hover i {
+  opacity: 1;
+  transform: translateX(-6px);
+}
+/* End of Slide Button  */
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: gray;
+  font-weight: bold;
+  font-size: 58px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0);
+  color:white;
+}
+
+
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+
+.navbar{
+  overflow: hidden;
+  background-color:transparent;
+}
+
+.navbar a {
+  float: left;
+  position: fixed;
+  z-index: 10;
+}
+
+
+.display-container{
+  background-image: url('cover.jpg');
+  min-height: 100%;
+  opacity: 0.7;
+  display:block;
+  margin-top:-1%
+}
+
+.display-container-2{
+  min-height: 70%;
+  opacity: 1;
+  display:block;
+}
+
+.footer{
+  opacity:0.8;
+  height: auto;
+  margin-top:0;
+  z-index: 10;
+  position: relative;
+  width: 100%;
+}
+
+.footer:hover{
+  opacity: 1;
+}
+
+.display-middle{
+margin-left: auto;
+margin-right: auto;
+width: 50%;
+padding-top: 25%;
+padding-left: 7%;
+}
+
+.footer-content{
+  float: left;
+  text-align: center;
+  width: 10%;
+}
+
+.button {
+  position:absolute;
+  width:700px;
+  left:29%;
+  top: 450px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity .35s ease;
+  font-size: 20px;
+  font-weight: 50;
+  letter-spacing: 2px;
+}
+
+.button div {
+  transition: transform 0.8s;
+}
+
+.button a {
+  padding: 16px 30px 16px;
+  outline: 0;
+  border: 1px solid white;
+  cursor: pointer;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  text-decoration: none;
+}
+
+.button i{
+  opacity: 0;
+}
+
+.button:hover div {
+  transform: translateX(-6px);
+}
+.button:hover i {
+  opacity: 1;
+  transform: translateX(6px);
+  font-size:12px;
+}
+
+
+
+
+.slideshow-container:hover .button {
+  opacity: 1;
+}
+
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.5s ease;
+}
+
+.slideshow-container:hover .overlay {
+  display: block;
+  background: rgba(0, 0, 0, .3);
+}
+
+
+</style>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="navbar">
+    <a href="home.html" class="bar-item">
+    <img id = "home-button" alt = "" src = "harp 1.png" height=100 width=100 style="opacity:0.7" onmouseover="hover(this);" onmouseout="unhover(this);">
+    </a>
+</div>
+
+
+<script>
+localStorage.setItem("myValue",0);
+</script>
+<!-- First Parallax Image with Logo Text -->
+<div class="display-container" id="home">
+  <div class="display-middle" style="white-space:nowrap;">
+  <img src="logo.png" style="display:block;margin-left:-15%;margin-top:-30%"/>
+  <a href="quiz.html" class="bar-item">
+  <button type="button" class="slide">
+  <div>Which genshin character are you?</div>
+  <i class="icon-arrow-right"></i>
+  </button>
+</a>
+  </div>
+</div>
+
+
+<div class="slideshow-container">
+
+<div class="slides fade">
+  <img src="monstadt.jpg"  class="fade-image" style="width:2000px;height:800px;">
+  <div class="overlay"></div>
+  <div class="button" ><div><a href="explore region.html?region=monstadt"> Explore Mondstadt <i class="icon-arrow-right"></i></a></div></div>
+</div>
+
+<div class="slides fade">
+  <img src="liyue.jpg"  class="fade-image" style="width:2000px;height:800px;">
+  <div class="overlay"></div>
+  <div class="button" ><div><a href="explore region.html?region=liyue"> Explore Liyue <i class="icon-arrow-right"></i></a></div></div>
+</div>
+
+<div class="slides fade">
+  <img src="inazuma.jpg"  class="fade-image" style="width:2000px;height:800px;">
+  <div class="overlay"></div>
+  <div class="button" ><div><a href="explore region.html?region=inazuma"> Explore Inazuma<i class="icon-arrow-right"></i></a></div></div>
+</div>
+
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+</div>
+
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("slides");
+
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+
+  slides[slideIndex-1].style.display = "block";
+}
+</script>
+
+
+
+
+<!-- Footer -->
+<footer class="footer" style="background:#8EA3CA">
+  <div class="footer-content-" style="color:white">
+    <img src="paimon_icon.png" style="padding-left:44%;margin-top:5%;height:70px; ">
+    <p style="padding-left:28%;padding-top:0;padding-right:30%;overflow:hidden;padding-bottom:5%;letter-spacing:1.1px;">" Genshin Impact is an open-world action role-playing game that allows
+       the player to control <br>one of four interchangeable characters in a party. Switching between characters can be done quickly during combat, allowing
+       the player to use several different combinations of skills and attacks. "</p>
+  </div>
+</footer>
+
+<script>
+
+
+
+
+
+function hover(element) {
+  element.setAttribute('src', 'harp 2.png');
+}
+
+function unhover(element) {
+  element.setAttribute('src', 'harp 1.png');
+}
+
+
+</script>
+
+</body>
+</html>

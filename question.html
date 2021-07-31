@@ -1,0 +1,143 @@
+<script type="text/javascript">
+  setTimeout(function() {
+
+    // Get page loader
+    var loader = document.getElementById('page-loader');
+
+    // remove the page loader
+    loader.parentNode.removeChild(loader);
+
+    // display the page contents
+   sessionStorage.setItem("page","question");
+   window.location.href = "loader.html";
+  },3000); // 3 second delay to mimic onload after 3 seconds
+</script>
+
+
+<html>
+<head>
+  <style>
+
+  </style>
+
+</head>
+
+<body>
+  <div id="page-loader" style="background-color:white;height:100%;width:100%;">
+    <img src="paimon_loader.gif" style="display: block;margin-left: auto;margin-right: auto;margin-top:auto;width: 30%;"/>
+    <h3 style="text-align: center;">Loading...</h3>
+	</div>
+
+	<div id="container" style="display: none;">
+<script>
+let i=0;
+document.body.style.backgroundImage = "url('sky 2.png')";
+let question=[{name:"Anan is a nice person",option:['1','2','3']},//an array of question objects
+{name:"Banan is a nice person",option:['1','2','3','4']},]
+</script>
+<p><span id="name"></span></p>
+<form>
+  <div id=input1>
+    <input type="radio" name="choice" value="1" id="choice-yes">
+    <label for="choice-yes" id="option1"><span id="value"></span></label>
+  </div>
+    <div id=input2>
+    <input type="radio" name="choice" value="2" id="choice-yes">
+    <label for="choice-yes" id="option2"><span id="value"></span></label>
+  </div>
+    <div id=input3>
+    <input type="radio" name="choice" value="3" id="choice-yes">
+    <label for="choice-yes" id="option3"><span id="value"></span></label>
+  </div>
+    <div id=input4>
+    <input type="radio" name="choice" value="4" id="choice-yes">
+    <label for="choice-yes" id="option4"><span id="value"></span></label>
+  </div>
+    <div id=input5>
+    <input type="radio" name="choice" value="5" id="choice-yes">
+    <label for="choice-yes" id="option5"><span id="value"></span></label>
+  </div>
+    <div id=input6>
+    <input type="radio" name="choice" value="6" id="choice-yes">
+    <label for="choice-yes" id="option6"><span id="value"></span></label>
+  </div>
+</form>
+<script>
+
+</script>
+<button onclick="store_answer_function();myFunction();changeBackgroundImage();" id="btn">Click me</button>
+
+<script>
+  //initial question
+  document.getElementById("name").innerHTML = question[i].name;
+  let k=0;
+  for(k=1;k<=(question[i].option).length;k++){
+  document.getElementById("input"+k+"").style.visibility='visible';
+  document.getElementById("option"+k+"").innerHTML = question[i].option[k-1];
+  }
+  for(k;k<=6;k++)
+  {
+    document.getElementById("input"+k+"").style.visibility='hidden';
+  }
+
+  //questions after the first
+  function myFunction(){
+    if(i<question.length-1){
+    i=i+1;
+    document.getElementById("name").innerHTML = question[i].name;
+    let k=0;
+    for(k=1;k<=(question[i].option).length;k++){
+    document.getElementById("input"+k+"").style.visibility='visible';
+    document.getElementById("option"+k+"").innerHTML = question[i].option[k-1];
+    }
+    for(k;k<=6;k++)
+    {
+      document.getElementById("input"+k+"").style.visibility = 'hidden';
+    }
+  }
+  }
+
+ // handle button click
+ function store_answer_function () {
+   //creating a null object for response
+    var response= {
+      question:null,
+      answer:null,
+    };
+    results=[];//an array to store the answers with respect to all the questions
+     const rbs = document.querySelectorAll('input[name="choice"]');
+     let selectedValue;
+     for (const rb of rbs) {
+         if (rb.checked) {
+             selectedValue = rb.value;
+             response.question=i;//obtains the index of the question
+             response.answer=rb.value;//gets the selected value for the answer
+             results.push(response);//stores them in an array
+             break;
+         }
+     }
+     console.log(results);
+ }
+
+ // The function below will change the background image
+ function changeBackgroundImage() {
+   let image_name="";
+   image_name="sky "+i+".png"
+   document.body.style.backgroundImage = "url('"+image_name+"')";
+   document.body.style.backgroundRepeat = "no-repeat";
+   document.body.style.backgroundSize = "cover";
+ }
+
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $(".btn").click(function(){
+    $("p").fadeIn();
+  });
+});
+</script>
+</div>
+</body>
+</html>

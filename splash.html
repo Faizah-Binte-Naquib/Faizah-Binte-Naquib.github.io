@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html>
+<title>Genshin Impact Quiz</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css" />
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+  height: 100%;
+  color: #777;
+  line-height: 1.8;
+}
+
+
+button {
+  margin: 50px;
+  font-family: inherit;
+}
+/* End of Page styling */
+
+
+/* Slide button styling */
+.slide {
+  font-size: 20px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px 30px 13px;
+  outline: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.slide i {
+  opacity: 0;
+  font-size: 13px;
+  transition: 0.2s;
+  position: absolute;
+  right: 10px;
+  top: 26px;
+  transition: transform 1;
+}
+
+.slide div {
+  transition: transform 0.8s;
+}
+
+.slide:hover div {
+  transform: translateX(-6px);
+}
+
+.slide::after {
+  content: "";
+  background-color: #9DA7C2;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+}
+
+.slide:hover i {
+  opacity: 1;
+  transform: translateX(-6px);
+}
+
+
+.container{
+    width:50%;
+    height: 20%;
+    background: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -ms-transform: translateX(50%);
+    transform: translateX(50%);
+    box-shadow: 10px 5px 5px black;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 50px;
+    letter-spacing: 1px;
+    font-family: serif;
+    color: black;
+}
+
+.navbar{
+  overflow: hidden;
+  background-color:transparent;
+}
+
+.navbar a {
+  float: left;
+  position: fixed;
+  z-index: 10;
+}
+
+
+</style>
+<body>
+
+<div class="container" id="description">
+</div>
+
+<script>
+var b = localStorage.getItem("myValue");
+console.log(b);
+if(b=='zhongli'){
+document.body.style.backgroundImage = "url('splashart/zhongli splash art.jpg_large')";
+document.body.style.backgroundRepeat = "no-repeat";
+document.body.style.backgroundSize = "cover";
+document.getElementById("description").innerHTML="'Zhongli is a calm, reserved, and polite man. He is generally reminiscent and nostalgic, holding a melancholy air to him, but occasionally shows signs of eccentricity'";
+
+}
+if(b=='diluc'){
+document.body.style.backgroundImage = "url('splashart/diluc splash art.jpg')";
+document.body.style.backgroundRepeat = "no-repeat";
+document.body.style.backgroundSize = "cover";
+document.getElementById("description").innerHTML="'Diluc can be termed as an anti-heroes with attitude problems'. His attitude of taking matters into hand lead him to become, to his dismay and embarrassment, the 'Darknight Hero' to protect Mondstadt's people.'";
+}
+if(b=='jean'){
+document.body.style.backgroundImage = "url('splashart/jean splash art.jpg')";
+document.body.style.backgroundRepeat = "no-repeat";
+document.body.style.backgroundSize = "cover";
+}
+if(b=='ganyu'){
+document.body.style.backgroundImage = "url('splashart/ganyu splash art.png')";
+document.body.style.backgroundRepeat = "no-repeat";
+document.body.style.backgroundSize = "cover";
+}
+if(b=='venti'){
+document.body.style.backgroundImage = "url('splashart/venti splash art.png')";
+document.body.style.backgroundRepeat = "no-repeat";
+document.body.style.backgroundSize = "cover";
+}
+if(b=='xiao'){
+document.body.style.backgroundImage = "url('splashart/xiao splash art.jpg')";
+document.body.style.backgroundRepeat = "no-repeat";
+document.body.style.backgroundSize = "cover";
+}
+
+
+var resetValue =0;
+localStorage.setItem("myValue", resetValue);
+</script>
+
+<!-- Navbar (sit on top) -->
+<div class="navbar">
+    <a href="index.html" class="bar-item">
+    <img id = "home-button" alt = "" src = "harp 1.png" height=100 width=100 style="opacity:0.7" onmouseover="hover(this);" onmouseout="unhover(this);">
+    </a>
+</div>
+
+
+
+
+<!-- Footer -->
+
+
+
+<script>
+// Change style of navbar on scroll
+window.onscroll = function() {myFunction()};
+function myFunction() {
+    var navbar = document.getElementById("myNavbar");
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        navbar.className = "w3-bar";
+    } else {
+        navbar.className = navbar.className.replace(" w3-card w3-animate-top w3-white", "");
+    }
+}
+
+
+function hover(element) {
+  element.setAttribute('src', 'harp 2.png');
+}
+
+function unhover(element) {
+  element.setAttribute('src', 'harp 1.png');
+}
+
+
+</script>
+
+</body>
+</html>

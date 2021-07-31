@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<title>Genshin Quiz</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap" rel="stylesheet" />
+<style>
+.main-card{
+background-color:rgba(255, 255, 255, 0.3);
+box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+height: auto;
+position: relative
+margin: 0;
+position: absolute;
+top: 50%;
+left: 50%;
+margin-right: -50%;
+transform: translate(-50%, -50%)
+}
+.question{
+text-align: center;
+font-size:1.7em;
+font-family: serif;
+}
+
+
+/* The container */
+.container {
+
+  width:50%;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-right:0px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 1.5em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container:hover{
+  opacity:0.8;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a black background */
+.container input:checked ~ .checkmark {
+  background-color: #000;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+.form{
+  margin-top:5%;
+  padding:auto;
+  font-family: serif;
+}
+
+
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  padding: 10px 25px 25px 10px;
+  border: 2px solid #000;
+  font-family: serif;
+  font-size: 1.4em;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+
+.btn {
+  background: #000;
+  color: #fff;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+}
+.btn span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.btn:hover{
+  opacity: 0.7;
+}
+
+.row{
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.page_number {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+  font-size: 18px;
+  background-color: white;
+  width: 50px;
+  height:50px;
+  text-align: center;
+  padding-bottom: 0.5%;
+}
+
+.navbar{
+  overflow: hidden;
+  background-color:transparent;
+}
+
+.navbar a {
+  float: left;
+  position: fixed;
+  z-index: 10;
+}
+
+</style>
+
+
+
+<body>
+
+<script>
+document.body.style.backgroundImage = "url('questions/question 0.jpg')";
+document.body.style.backgroundRepeat = "no-repeat";
+document.body.style.backgroundSize = "cover";
+</script>
+  <!-- Navbar (sit on top) -->
+  <!-- Navbar (sit on top) -->
+  <div class="navbar">
+      <a href="index.html" class="bar-item">
+      <img id = "home-button" alt = "" src = "harp 1.png" height=100 width=100 style="opacity:0.7" onmouseover="hover(this);" onmouseout="unhover(this);">
+      </a>
+  </div>
+  <!--for navbar hover-->
+  <script>
+    function hover(element) {
+      element.setAttribute('src', 'harp 2.png');
+    }
+
+    function unhover(element) {
+      element.setAttribute('src', 'harp 1.png');
+    }
+  </script>
+<!--End of Navbar-->
+
+
+
+<script>
+let i=0;
+let question=[{name:"Which traffic signal would best describe you, in terms of taking life decisions?",option:['Red','Yellow','Green']},//an array of question objects
+{name:"What is your favorite part of the day?",option:['Morning','Noon','Evening','Night']},
+{name:"Which one of these would you consider your hobby?",option:['Reading','Music','Travel','Work']},
+{name:"What is your favourite color?",option:['Red','Yellow','Blue','Green','Black']},
+{name:"Which one of these food items would you prefer?",option:['Not Seafood','Tofu','Alcohol','Pizza','Sweets','Grape Juice']},
+{name:"Which Football position do you prefer?",option:['Defense','Mid','Strike']},
+{name:"Greenary or Mountains?",option:['Greenary','Mountains']},]
+</script>
+
+<div class="main-card" style="width:25%">
+  <div  style="background-color:white;padding:10%">
+    <div class="question" style="" id="name"></div>
+  </div>
+<div class="row">
+<div class="form">
+<div id=input1 style="background-color:white;padding:1% 2% 1% 2%;">
+    <label class="container">
+      <input type="radio" checked="checked" name="radio" value="1">
+      <span class="checkmark"></span>
+      <div id=option1 style="width:300px"></div>
+    </label>
+</div>
+<div id=input2 style="background-color:white;padding:1% 2% 1% 2%;">
+    <label class="container">
+      <input type="radio" name="radio" value="2">
+      <span class="checkmark"></span>
+      <div id=option2 style="width:50px;"></div>
+    </label>
+</div>
+<div id=input3 style="background-color:white;padding:2% 2% 1% 2%;">
+    <label class="container">
+      <input type="radio" name="radio" value="3">
+      <span class="checkmark"></span>
+      <div id=option3></div>
+    </label>
+</div>
+<div id=input4 style="background-color:white;padding:2% 2% 1% 2%;">
+    <label class="container">
+      <input type="radio" name="radio" value="3">
+      <span class="checkmark"></span>
+      <div id=option4></div>
+    </label>
+</div>
+<div id=input5 style="background-color:white;padding:2% 2% 1% 2%;">
+    <label class="container">
+      <input type="radio" name="radio" value="3">
+      <span class="checkmark"></span>
+      <div id=option5></div>
+    </label>
+</div>
+<div id=input6 style="background-color:white;padding:2% 2% 1% 2%;">
+    <label class="container">
+      <input type="radio" name="radio" value="3">
+      <span class="checkmark"></span>
+      <div id=option6></div>
+    </label>
+</div>
+</div>
+<br>
+<button type="button" class="custom-btn btn" onclick="store_answer_function();questionFunction();changeBackgroundImage();">Submit</button>
+<br>
+  </div>
+</div>
+
+
+
+
+
+  <div class="page_number" id="page" style="font-size:50px;font-weight:bold;color:black"></div>
+
+
+<!--The first question-->
+<script>
+  document.getElementById("page").innerHTML=i+1;
+  document.getElementById("name").innerHTML = question[i].name;
+  let k=0;
+  for(k=1;k<=(question[i].option).length;k++){
+  document.getElementById("input"+k+"").style.visibility='visible';
+  document.getElementById("option"+k+"").innerHTML = question[i].option[k-1];
+  }
+  for(k;k<=6;k++)
+  {
+    document.getElementById("input"+k+"").style.visibility='hidden';
+  }
+</script>
+
+
+<script>
+//questions after the first
+function questionFunction(){
+  if(i==6)
+  {
+    a=getResult();
+    localStorage.setItem("myValue", a[0]);
+    window.location.href="loader.html";
+  }
+  if(i<question.length-1){
+  i=i+1;
+  document.getElementById("page").innerHTML=i+1;
+  document.getElementById("name").innerHTML = question[i].name;
+  let k=0;
+  for(k=1;k<=(question[i].option).length;k++){
+  document.getElementById("input"+k+"").style.visibility='visible';
+  document.getElementById("option"+k+"").innerHTML = question[i].option[k-1];
+  }
+  for(k;k<=6;k++)
+  {
+    document.getElementById("input"+k+"").style.visibility = 'hidden';
+  }
+}
+}
+</script>
+
+
+<script>
+// handle button click
+var results=[];//an array to store the answers with respect to all the questions
+function store_answer_function () {
+  //creating a null object for response
+   var response= {
+     question:null,
+     answer:null,
+   };
+    const rbs = document.querySelectorAll('input[name="radio"]');
+    let selectedValue;
+    for (const rb of rbs) {
+        if (rb.checked) {
+            selectedValue = rb.value;
+            response.question=i;//obtains the index of the question
+            response.answer=rb.value;//gets the selected value for the answer
+            results.push(response);//stores them in an array
+            break;
+        }
+    }
+    console.log(results);
+}
+</script>
+
+
+<script>
+// The function below will change the background image
+function changeBackgroundImage() {
+  let image_name="";
+  image_name="question "+i+".jpg"
+  document.body.style.backgroundImage = "url('questions/"+image_name+"')";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundSize = "cover";
+}
+</script>
+
+
+<script>
+let character={zhongli:0,venti:0,diluc:0,jean:0,xiao:0,ganyu:0};
+//zhongli=0,venti=0, diluc=0, jean=0, xiao=0, ganyu=0;
+function getResult()
+{
+      console.log(results);
+  //first question
+  if(results[0].answer=="1")
+  {
+    character['diluc']=character['diluc']+6;
+  }
+  else if(results[0].answer==2)
+  {
+    character['zhongli']=character['zhongli']+4;
+  }
+  else {
+      character['venti']=character['venti']+4;
+      character['xiao']=character['xiao']+4;
+      character['jean'] = character['jean']+4;
+      character['ganyu']=character['ganyu']+2;
+  }
+
+
+  //second question
+  if(results[1].answer==1)
+  {
+          character['jean'] = character['jean']+4;
+          character['zhongli']=character['zhongli']+4;
+  }
+  else if(results[1].answer==2)
+  {
+          character['ganyu']=character['ganyu']+4;
+  }
+  else if(results[1].answer==3)
+    {
+      character['venti']=character['venti']+4;
+    }
+  else {
+        character['xiao']=character['xiao']+4;
+        character['diluc']=character['diluc']+4;
+  }
+
+  //third question
+  if(results[2].answer==1)
+  {
+          character['zhongli']=character['zhongli']+4;
+  }
+  else if(results[2].answer==2)
+  {
+          character['venti']=character['venti']+4;
+  }
+  else if(results[2].answer==3)
+    {
+      character['xiao']=character['xiao']+4;
+      character['diluc']=character['diluc']+4;
+    }
+  else {
+        character['jean'] = character['jean']+4;
+        character['ganyu']=character['ganyu']+4;
+  }
+
+
+  //fourth question
+  if(results[3].answer==1)
+  {
+          character['diluc']=character['diluc']+4;
+  }
+  else if(results[3].answer==2)
+  {
+          character['jean'] = character['jean']+4;
+  }
+  else if(results[3].answer==3)
+    {
+      character['venti']=character['venti']+2;
+      character['ganyu']=character['ganyu']+2;
+    }
+  else if(results[3].answer==4){
+        character['xiao']=character['xiao']+4;
+    }
+  else {
+      character['zhongli']=character['zhongli']+4;
+  }
+
+  //fifth question
+  if(results[4].answer==1)
+  {
+      character['zhongli']=character['zhongli']+4;
+  }
+  else if(results[4].answer==2)
+  {
+      character['xiao']=character['xiao']+4;
+  }
+  else if(results[4].answer==3)
+    {
+      character['venti']=character['venti']+4;
+    }
+  else if(results[4].answer==4){
+      character['jean']=character['jean']+4;
+    }
+  else if(results[4].answer==5){
+        character['ganyu']=character['ganyu']+4;
+  }
+  else {
+        character['diluc']=character['diluc']+4;
+  }
+
+
+  //sixth question
+  if(results[5].answer==1)
+  {
+          character['zhongli']=character['zhongli']+4;
+          character['jean'] = character['jean']+4;
+  }
+  else if(results[5].answer==2)
+  {
+            character['venti']=character['venti']+2;
+            character['diluc']=['diluc']+4;
+  }
+  else if(results[5].answer==3)
+  {
+      character['xiao']=character['xiao']+2;
+      character['ganyu']=character['ganyu']+4;
+  }
+
+  //seventh question
+  if(results[6].answer==1)
+  {
+          character['zhongli']=character['zhongli']+4;
+          character['jean'] = character['jean']+4;
+  }
+  else if(results[6].answer==2)
+  {
+            character['venti']=character['venti']+2;
+            character['diluc']=character['diluc']+4;
+  }
+
+  var sortable = [];
+  for (var vehicle in character) {
+    sortable.push([vehicle, character[vehicle]]);
+  }
+
+  sortable.sort(function(a, b) {
+    return a[1] - b[1];
+  });
+
+ return sortable[5];
+}
+</script>
+
+</body>
+</html>

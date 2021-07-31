@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+  <img src="inazuma.png" id="image"/>
+  <button onclick="stopinterval()">Next</button>
+  <script>
+  //let timerId = setInterval(() => alert('tick'), 2000);
+  array=['inazuma.png','liyue.jpg','monstadt.jpg']
+  let i=0;
+  function change_image(){
+    if(i==0 || i==1 || i==2){
+      document.getElementById("image").src = array[i];
+      i=i+1;
+    }
+    else {
+        i=i-3;
+        document.getElementById("image").src = array[i];
+    }
+  }
+  let timerId = setInterval(change_image, 2000);
+  function stopinterval(){
+    if(timerId!=null){
+    setTimeout(() => { clearInterval(timerId);},0);
+  }
+  change_image();
+  }
+  </script>
+
+<body>
+</html>
